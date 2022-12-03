@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"advent.com/problem/problems"
+	"advent.com/problem/solutions"
 )
 
 func main() {
-	fmt.Println(problems.Day_two())
+	fmt.Println(solutions.Day_two_partTwo())
 }
