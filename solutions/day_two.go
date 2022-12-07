@@ -1,14 +1,15 @@
 package solutions
 
 import (
-	"bufio"
-	"fmt"
-	"os"
 	"strings"
+
+	"advent.com/problem/utils"
 )
 
+var path_daytwo = "/workspaces/AdventOfCode2022/problem_set/problem_day_two.txt"
+
 func Day_two() int {
-	var puzzle = openFileForReadAndParse()
+	var puzzle = utils.OpenFileForReadAndParse(path_daytwo)
 	// puzzle := []string{"A Y", "B X", "C Z"}
 
 	//Running score
@@ -36,7 +37,7 @@ func Day_two() int {
 }
 
 func Day_two_partTwo() int {
-	var puzzle = openFileForReadAndParse()
+	var puzzle = utils.OpenFileForReadAndParse(path_daytwo)
 	// puzzle := []string{"A Y", "B X", "C Z"}
 
 	//Running score
@@ -53,29 +54,6 @@ func Day_two_partTwo() int {
 	}
 
 	return score
-}
-
-func openFileForReadAndParse() []string {
-	var path = "/workspaces/AdventOfCode2022/problem_set/problem_day_two.txt"
-	puzzleData := []string{}
-
-	file, err := os.Open(path)
-
-	if err != nil {
-		fmt.Printf("Could not open the file due to this  %s error \n", err)
-	}
-
-	fileScanner := bufio.NewScanner(file)
-	fileScanner.Split(bufio.ScanLines)
-
-	for fileScanner.Scan() {
-		puzzleData = append(puzzleData, fileScanner.Text())
-	}
-
-	if err = file.Close(); err != nil {
-		fmt.Printf("Could not open the file due to this  %s error \n", err)
-	}
-	return puzzleData
 }
 
 func calculateWinner(player_one string, player_two string) int {
@@ -98,19 +76,6 @@ func calculateWinner(player_one string, player_two string) int {
 }
 
 func calculateRoundEnd(player_one string, player_two string) int {
-	// if player_two == "X" {
-	// 	score++
-	// } else if player_two == "Y" {
-	// 	score += 2
-	// } else {
-	// 	score += 3
-	// }
-
-	//Handle loss:
-	// if (player_one == "A" && player_two == "X") || (player_one == "B" && player_two == "X") || (player_one == "C" && player_two == "Z") {
-	// 	return 3
-	// }
-
 	//handle loss
 	if player_one == "A" && player_two == "X" {
 		return 3
