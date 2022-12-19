@@ -1,10 +1,10 @@
 package main
 
 import (
-	"math"
-	"os"
-	"strconv"
-	"strings"
+	// "math"
+	// "os"
+	// "strconv"
+	// "strings"
 
 	"advent.com/problem/solutions"
 )
@@ -80,30 +80,34 @@ import (
 // 	fmt.Println(solutions.Day_four())
 // }
 
-func main() {
-	input, _ := os.ReadFile("/workspaces/AdventOfCode2022/problem_set/problem_day_five.txt")
-	split := strings.Split(string(input), "\n\n")
-	layout := strings.Split(split[0], "\n")
-	stacks := make(map[int][]rune)
-	stackKeys := []int{}
-	for i := len(layout) - 1; i >= 0; i-- {
-		if i == len(layout)-1 {
-			for _, k := range strings.Split(strings.TrimSpace(layout[i]), "   ") {
-				key, _ := strconv.Atoi(k)
-				stacks[key] = []rune{}
-				stackKeys = append(stackKeys, key)
-			}
-		} else {
-			for i, c := range layout[i] {
-				if !strings.ContainsAny(string(c), " []") {
-					key := int(math.Ceil(float64(i) / 4))
-					stacks[key] = append(stacks[key], c)
-				}
-			}
-		}
+// func main() {
+// 	input, _ := os.ReadFile("/workspaces/AdventOfCode2022/problem_set/problem_day_five.txt")
+// 	split := strings.Split(string(input), "\n\n")
+// 	layout := strings.Split(split[0], "\n")
+// 	stacks := make(map[int][]rune)
+// 	stackKeys := []int{}
+// 	for i := len(layout) - 1; i >= 0; i-- {
+// 		if i == len(layout)-1 {
+// 			for _, k := range strings.Split(strings.TrimSpace(layout[i]), "   ") {
+// 				key, _ := strconv.Atoi(k)
+// 				stacks[key] = []rune{}
+// 				stackKeys = append(stackKeys, key)
+// 			}
+// 		} else {
+// 			for i, c := range layout[i] {
+// 				if !strings.ContainsAny(string(c), " []") {
+// 					key := int(math.Ceil(float64(i) / 4))
+// 					stacks[key] = append(stacks[key], c)
+// 				}
+// 			}
+// 		}
 
-	}
-	moves := strings.Split(split[1], "\n")
-	// partOne(moves, stacks, stackKeys)
-	solutions.PartTwo(moves, stacks, stackKeys)
+// 	}
+// 	moves := strings.Split(split[1], "\n")
+// 	// partOne(moves, stacks, stackKeys)
+// 	solutions.PartTwo(moves, stacks, stackKeys)
+// }
+
+func main() {
+	solutions.Day_eight()
 }
